@@ -13,15 +13,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="/admin/brands">
                 <i class="mdi mdi-chart-pie menu-icon"></i>
-                <span class="menu-title">Brands</span>
+                <span class="menu-title">Brand</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a class="nav-link" href="/admin/products">
                 <i class="mdi mdi-grid-large menu-icon"></i>
-                <span class="menu-title">Tables</span>
+                <span class="menu-title">Product</span>
             </a>
         </li>
         <li class="nav-item">
