@@ -37,6 +37,11 @@
                                     aria-selected="false">Details</button>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="color-tab" data-bs-toggle="tab" data-bs-target="#color"
+                                    type="button" role="tab" aria-controls="color" aria-selected="false">
+                                    Product Color</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image"
                                     type="button" role="tab" aria-controls="image" aria-selected="false">Product
                                     Image</button>
@@ -124,6 +129,28 @@
 
 
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="border p-3 tab-pane fade" id="color" role="tabpanel"
+                                aria-labelledby="color-tab">
+                                <label class="mb-3">Select color for your product</label>
+                                <div class="row">
+                                    @forelse ($colors as $color)
+                                        <div class="col-md-3">
+                                            <div class="p-2 border mb-3">
+                                                Color : <input type="checkbox" name="colors[{{ $color->id }}]"
+                                                    value="{{ $color->id }}" class="mb-3" />{{ $color->name }}
+
+                                                <br />
+                                                Quantity : <input type="number" name="quantity[{{ $color->id }}]"
+                                                    style="width: 70px; border:1px solid;" />
+                                            </div>
+                                        </div>
+
+                                    @empty
+                                        <h5>No Color Found</h5>
+                                    @endforelse
                                 </div>
                             </div>
 
