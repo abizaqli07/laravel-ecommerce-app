@@ -143,7 +143,7 @@
                                                     value="{{ $color->id }}" class="mb-3" />{{ $color->name }}
 
                                                 <br />
-                                                Quantity : <input type="number" name="quantity[{{ $color->id }}]"
+                                                Quantity : <input type="number" name="color_quantity[{{ $color->id }}]"
                                                     style="width: 70px; border:1px solid;" />
                                             </div>
                                         </div>

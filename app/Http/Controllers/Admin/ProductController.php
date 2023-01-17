@@ -70,7 +70,11 @@ class ProductController extends Controller
 
         if($request->colors){
             foreach($request->colors as $key => $color){
-                $product->productColors()->create([]);
+                $product->productColors()->create([
+                    'product_id' => $product->id,
+                    'color_id' => $color,
+                    'quantity' => $request->color_quantity[$key] ?? 0
+                ]);
             }
         }
 

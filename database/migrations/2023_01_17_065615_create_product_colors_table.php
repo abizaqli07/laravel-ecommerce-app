@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('product_colors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('color_id')->nullable();
+            $table->integer('quantity');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('set null');
             $table->timestamps();
         });
     }
