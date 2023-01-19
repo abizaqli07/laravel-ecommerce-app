@@ -273,7 +273,7 @@
                 }
 
                 var data = {
-                    'product_id': prod_color_id,
+                    'product_id': product_id,
                     'qty': qty
                 };
 
@@ -290,16 +290,17 @@
                     }
                 });
             });
-            
+
             $(document).on('click', '.deleteProductColorBtn', function() {
                 var prod_color_id = $(this).val();
                 var thisClick = $(this);
 
                 $.ajax({
                     type: "GET",
-                    url: "/admin/product-color/"+prod_color_id+"/delete",
-                    success: function (response){
+                    url: "/admin/product-color/" + prod_color_id + "/delete",
+                    success: function(response) {
                         thisClick.closest('.prod-color-tr').remove();
+                        alert(response.message);
                     }
                 })
             })

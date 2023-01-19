@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\ProductColor;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -132,6 +133,16 @@ class ProductController extends Controller
                 }
             }
 
+            if ($request->colors) {
+                foreach ($request->colors as $key => $color) {
+                    $product->productColors()->create([
+                        'product_id' => $product->id,
+                        'color_id' => $color,
+                        'quantity' => $request->color_quantity[$key] ?? 0
+                    ]);
+                }
+            }
+
             return redirect('admin/products')->with('message', 'Product updated successfully');
         } else {
             return redirect('admin/products')->with('message', 'No Such Product Id');
@@ -174,11 +185,13 @@ class ProductController extends Controller
             'quantity' => $request->qty
         ]);
 
-        return response()->json(['message' => 'Product color quantity updated', 200]);
+        return response()->json(['message' => 'Product color quantity updated']);
     }
 
-    public function deleteProdColor()
+    public function deleteProdColor($prod_color_id)
     {
-        
+        $prodColor = ProductColor::findOrFail($prod_color_id);
+        $prodColor->delete();
+        return response()->json(['message' => 'Product color deleted']);
     }
 }
