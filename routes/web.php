@@ -20,8 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-
-Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
+Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function () {
+	Route::get('/', 'index');
+	Route::get('/collections', 'categories');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -50,7 +52,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 		Route::put('/products/{product}', 'update');
 		Route::get('/products/{product_id}/delete', 'destroy');
 		Route::get('product-image/{product_image_id}/delete', 'destroyImage');
-		
+
 		Route::post('/product-color/{prod_color_id}', 'updateProdColorQty');
 		Route::get('/product-color/{prod_color_id}/delete', 'deleteProdColor');
 	});

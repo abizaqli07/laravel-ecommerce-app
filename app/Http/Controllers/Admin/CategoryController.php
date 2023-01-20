@@ -36,7 +36,7 @@ class CategoryController extends Controller
             $filename = time().'.'.$ext;
 
             $file->move('uploads/category/',$filename);
-            $category->image = $filename;
+            $category->image = 'uploads/category/'.$filename;
         }
 
         $category->meta_title = $validatedData['meta_title'];
@@ -75,7 +75,7 @@ class CategoryController extends Controller
             $filename = time().'.'.$ext;
 
             $file->move('uploads/category/',$filename);
-            $category->image = $filename;
+            $category->image = 'uploads/category/'.$filename;
         }
 
         $category->meta_title = $validatedData['meta_title'];
