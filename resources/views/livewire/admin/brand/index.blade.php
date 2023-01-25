@@ -26,6 +26,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Category</th>
                                 <th>Slug</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -36,6 +37,13 @@
                                 <tr>
                                     <td>{{ $brand->id }}</td>
                                     <td>{{ $brand->name }}</td>
+                                    <td>
+                                        @if ($brand->category)
+                                            {{ $brand->category->name }}
+                                        @else
+                                            No category
+                                        @endif
+                                    </td>
                                     <td>{{ $brand->slug }}</td>
                                     <td>{{ $brand->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>
